@@ -1,5 +1,5 @@
 import unittest
-from ui.base import Widget
+from ui.ui_element import UIElement
 from unittest.mock import MagicMock
 
 

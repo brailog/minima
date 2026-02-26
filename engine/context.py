@@ -1,13 +1,15 @@
 from functools import wraps
+from contextvars import ContextVar
 from engine.controller import BrowserController
 
+current_session: ContextVar[BrowserController] = ContextVar("current_session")
 
 def browser_session(
-    url: str,
-    browser_type: str = "",
-    maximize: bool = False,
-    headless: bool = False,
-    kill_browser: bool = True,
+        url: str,
+        browser_type: str = "chrome",
+        maximize: bool = False,
+        headless: bool = False,
+        kill_browser: bool = True,
 ):
     """
     A decorator that manages a browser session using the BrowserController, with support for configuring
@@ -27,7 +29,6 @@ def browser_session(
     Returns:
         Callable: The wrapped function with the browser session management.
     """
-
     def decorator(func):
         @wraps(func)
         def wrapper(*args, **kwargs):
@@ -42,16 +43,18 @@ def browser_session(
             Returns:
                 Any: The result of the decorated function.
             """
-            session = BrowserController(
+            driver_session = BrowserController(
                 browser_type=browser_type, maximize=maximize, headless=headless, kill_browser=kill_browser
             )
+            token = current_session.set(driver_session)
             try:
-                session.open_url(url)
-                return func(session, *args, **kwargs)
+                driver_session.open_url(url)
+                return func(*args, **kwargs)
             finally:
                 if kill_browser:
-                    session.close_browser()
+                    driver_session.close_browser()
+
+                current_session.reset(token)
 
         return wrapper
-
     return decorator
