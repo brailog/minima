@@ -1,9 +1,9 @@
 import re
 import time
 
-from engine.context import current_session
-from logs.logger_utils import initialize_logger
-from settings.exceptions import ElementNotVisibleException
+from minima.engine.context import current_session
+from minima.logs.logger_utils import initialize_logger
+from minima.settings.exceptions import ElementNotVisibleException
 
 
 class UIElement:

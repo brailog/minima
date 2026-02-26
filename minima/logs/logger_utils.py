@@ -2,7 +2,7 @@ import logging
 import sys
 from typing import Optional
 
-from settings.settings import config
+from minima.settings.settings import config
 
 
 def initialize_logger(

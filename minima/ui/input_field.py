@@ -1,4 +1,4 @@
-from ui.ui_element import UIElement
+from minima.ui.ui_element import UIElement
 
 
 class InputField(UIElement):

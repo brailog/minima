@@ -1,4 +1,4 @@
-from engine.context import current_session
+from minima.engine.context import current_session
 
 
 class Browser:

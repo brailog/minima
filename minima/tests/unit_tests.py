@@ -1,7 +1,7 @@
 import unittest
 from unittest.mock import MagicMock
 
-from ui.ui_element import UIElement
+from minima.ui.ui_element import UIElement
 
 
 class TestWidgetXPath(unittest.TestCase):

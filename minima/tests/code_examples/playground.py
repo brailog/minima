@@ -2,14 +2,14 @@ import os
 import random
 import time
 
-from engine.context import browser_session
-from ui.browser import Browser
-from ui.button import Button
-from ui.dropdown import Dropdown
-from ui.file_manager import FileManager
-from ui.input_field import InputField
-from ui.text import Text, Textlink
-from ui.ui_element import UIElement
+from minima.engine.context import browser_session
+from minima.ui.browser import Browser
+from minima.ui.button import Button
+from minima.ui.dropdown import Dropdown
+from minima.ui.file_manager import FileManager
+from minima.ui.input_field import InputField
+from minima.ui.text import Text, Textlink
+from minima.ui.ui_element import UIElement
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 MOCKUP_TEST_URL_FILE = "https://ui-playground.xyz/"

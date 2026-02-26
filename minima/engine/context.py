@@ -1,7 +1,7 @@
 from contextvars import ContextVar
 from functools import wraps
 
-from engine.controller import BrowserController
+from minima.engine.controller import BrowserController
 
 current_session: ContextVar[BrowserController] = ContextVar("current_session")
 

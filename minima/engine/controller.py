@@ -12,8 +12,8 @@ from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.support.ui import Select, WebDriverWait
 
-from logs.logger_utils import initialize_logger
-from settings.settings import config
+from minima.logs.logger_utils import initialize_logger
+from minima.settings.settings import config
 
 FIREFOX_BIN_LINUX = os.path.join(
     "/snap", "firefox", "current", "usr", "lib", "firefox", "firefox"
