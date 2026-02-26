@@ -1,9 +1,10 @@
 import os
 import time
 import random
-from engine.context import browser_session, current_session
+from engine.context import browser_session
 
 from ui.ui_element import UIElement
+from ui.browser import Browser
 from ui.button import Button
 from ui.text import Text, Textlink
 from ui.input_field import InputField
@@ -40,15 +41,13 @@ def test_botoes():
 
 
 def test_links():
-    session = current_session.get()  # Pegando a sessão do contexto para lidar com os alertas/abas
-
     Textlink(id="simple-link").click()
-    session.accept_alert()
+    Browser.accept_alert()
 
     Textlink(id="new-tab-link", text="Link em Nova Aba").click()
-    session.accept_alert()
-    session.switch_to_new_tab()
-    session.close_current_tab()
+    Browser.accept_alert()
+    Browser.switch_to_new_tab()
+    Browser.close_current_tab()
 
     Textlink(id="download-link", text="Link de Download").click()
     time.sleep(0.5)

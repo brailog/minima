@@ -11,7 +11,7 @@ from selenium.webdriver.support.ui import Select
 from selenium.common.exceptions import TimeoutException
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-MOCKUP_TEST_URL_FILE = "http://localhost:8080/"
+MOCKUP_TEST_URL_FILE = "https://ui-playground.xyz/"
 
 
 def start(driver):
