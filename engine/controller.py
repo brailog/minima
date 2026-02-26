@@ -1,26 +1,34 @@
 import os
-from typing import Any
 from platform import system
+from typing import Any
+
 from selenium import webdriver
-from selenium.webdriver.common.by import By
-from selenium.webdriver.support.ui import WebDriverWait
-from selenium.webdriver.support import expected_conditions as EC
-from selenium.webdriver.common.action_chains import ActionChains
-from selenium.common.exceptions import TimeoutException, NoSuchWindowException
+from selenium.common.exceptions import NoSuchWindowException, TimeoutException
 from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.common.action_chains import ActionChains
+from selenium.webdriver.common.by import By
 from selenium.webdriver.firefox.service import Service as FirefoxService
 from selenium.webdriver.remote.webdriver import WebDriver
-from selenium.webdriver.support.ui import Select
+from selenium.webdriver.support import expected_conditions as EC
+from selenium.webdriver.support.ui import Select, WebDriverWait
 
 from logs.logger_utils import initialize_logger
 from settings.settings import config
 
-FIREFOX_BIN_LINUX = os.path.join("/snap", "firefox", "current", "usr", "lib", "firefox", "firefox")
-FIREFOXDRIVE_BIN_LINUX = os.path.join("/snap", "firefox", "current", "usr", "lib", "firefox", "geckodriver")
+FIREFOX_BIN_LINUX = os.path.join(
+    "/snap", "firefox", "current", "usr", "lib", "firefox", "firefox"
+)
+FIREFOXDRIVE_BIN_LINUX = os.path.join(
+    "/snap", "firefox", "current", "usr", "lib", "firefox", "geckodriver"
+)
 CHROME_BIN_LINUX = os.path.join("/usr", "bin", "google-chrome")
 
-FIREFOX_BIN_WINDOWS = os.path.join("C:\\", "Program Files", "Mozilla Firefox", "firefox.exe")
-CHROME_BIN_WINDOWS = os.path.join("C:\\", "Program Files", "Google", "Chrome", "Application", "chrome.exe")
+FIREFOX_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files", "Mozilla Firefox", "firefox.exe"
+)
+CHROME_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files", "Google", "Chrome", "Application", "chrome.exe"
+)
 
 
 class BrowserController:
@@ -29,7 +37,13 @@ class BrowserController:
     and browser control. Supports configurable options such as browser type, headless mode, and maximization.
     """
 
-    def __init__(self, browser_type: str, maximize: bool, headless: bool, kill_browser: bool = True) -> None:
+    def __init__(
+        self,
+        browser_type: str,
+        maximize: bool,
+        headless: bool,
+        kill_browser: bool = True,
+    ) -> None:
         """
         Initializes the BrowserController with the specified browser configuration.
 
@@ -87,7 +101,9 @@ class BrowserController:
             self.logger.error(f"No alert was present within {timeout} seconds.")
             raise
         except Exception as e:
-            self.logger.error(f"An unexpected error occurred while handling the alert: {e}")
+            self.logger.error(
+                f"An unexpected error occurred while handling the alert: {e}"
+            )
             raise
 
     def switch_to_new_tab(self) -> None:
@@ -113,13 +129,19 @@ class BrowserController:
         self.logger.debug("Switching back to the original tab.")
         try:
             self.driver.switch_to.window(self.original_window)
-            self.logger.info(f"Switched back to original tab with handle: {self.original_window}")
+            self.logger.info(
+                f"Switched back to original tab with handle: {self.original_window}"
+            )
         except NoSuchWindowException:
-            self.logger.warning("Original tab seems to be closed. Switching to the first available tab.")
+            self.logger.warning(
+                "Original tab seems to be closed. Switching to the first available tab."
+            )
             if self.driver.window_handles:
                 self.driver.switch_to.window(self.driver.window_handles[0])
             else:
-                self.logger.error("No tabs available to switch to. The browser might be closed.")
+                self.logger.error(
+                    "No tabs available to switch to. The browser might be closed."
+                )
 
     def close_current_tab(self) -> None:
         """
@@ -131,7 +153,9 @@ class BrowserController:
             self.driver.close()
             self.switch_to_original_tab()
         else:
-            self.logger.warning("Cannot close the tab as it is the only one open. Use `close_browser()` to end the session.")
+            self.logger.warning(
+                "Cannot close the tab as it is the only one open. Use `close_browser()` to end the session."
+            )
 
     def find_element(self, xpath: str, timeout: int = 10) -> Any:
         """
@@ -187,10 +211,14 @@ class BrowserController:
             )
             ActionChains(self.driver).move_to_element(body_element).perform()
         except Exception as e:
-            self.logger.error(f"Failed to move mouse to body element to unhover. Error: {e}")
+            self.logger.error(
+                f"Failed to move mouse to body element to unhover. Error: {e}"
+            )
             raise
 
-    def drag_and_drop(self, source_xpath: str, target_xpath: str, timeout: int = 10) -> None:
+    def drag_and_drop(
+        self, source_xpath: str, target_xpath: str, timeout: int = 10
+    ) -> None:
         """
         Performs a drag-and-drop action from a source element to a target element.
 
@@ -209,7 +237,9 @@ class BrowserController:
             target_element = self.find_element(target_xpath, timeout)
 
             if self.browser_type == "firefox":
-                self.logger.debug(f"Performing drag and drop for Firefox using JavaScript from '{source_xpath}' to '{target_xpath}'.")
+                self.logger.debug(
+                    f"Performing drag and drop for Firefox using JavaScript from '{source_xpath}' to '{target_xpath}'."
+                )
                 dnd_script = """
                     const source = arguments[0];
                     const target = arguments[1];
@@ -231,11 +261,19 @@ class BrowserController:
                     source.dispatchEvent(dragEndEvent);
                 """
                 self.driver.execute_script(dnd_script, source_element, target_element)
-                self.logger.info("Drag and drop action completed successfully via JavaScript.")
+                self.logger.info(
+                    "Drag and drop action completed successfully via JavaScript."
+                )
             else:
-                self.logger.debug(f"Performing drag and drop for '{self.browser_type}' using ActionChains from '{source_xpath}' to '{target_xpath}'.")
-                ActionChains(self.driver).drag_and_drop(source_element, target_element).perform()
-                self.logger.info("Drag and drop action completed successfully via ActionChains.")
+                self.logger.debug(
+                    f"Performing drag and drop for '{self.browser_type}' using ActionChains from '{source_xpath}' to '{target_xpath}'."
+                )
+                ActionChains(self.driver).drag_and_drop(
+                    source_element, target_element
+                ).perform()
+                self.logger.info(
+                    "Drag and drop action completed successfully via ActionChains."
+                )
         except Exception as e:
             self.logger.error(f"Drag and drop action failed. Error: {e}")
             raise
@@ -254,9 +292,9 @@ class BrowserController:
         """
         self.logger.debug(f"Enter text safely: {text} into element with XPath: {xpath}")
         element = self.find_element(xpath, timeout)
-        
+
         self.driver.execute_script("arguments[0].focus();", element)
-        
+
         element.clear()
         element.send_keys(text)
 
@@ -270,13 +308,15 @@ class BrowserController:
             value (str): The value to set for the element.
             timeout (int): Maximum time (in seconds) to wait for the element to be located.
         """
-        self.logger.debug(f"Setting value '{value}' for element with XPath: {xpath} using JavaScript.")
+        self.logger.debug(
+            f"Setting value '{value}' for element with XPath: {xpath} using JavaScript."
+        )
         element = self.find_element(xpath, timeout)
         # Set the value and then dispatch a 'change' event to ensure any listeners are triggered.
         self.driver.execute_script(
             "arguments[0].value = arguments[1]; arguments[0].dispatchEvent(new Event('change'));",
             element,
-            value
+            value,
         )
 
     def scroll_to_element(self, xpath: str, timeout: int = 10) -> None:
@@ -346,7 +386,9 @@ class BrowserController:
             TimeoutException: If the element is not present within the given time.
             ValueError: If the provided file_path is not an absolute path.
         """
-        self.logger.debug(f"Uploading file '{file_path}' to element with XPath: {xpath}")
+        self.logger.debug(
+            f"Uploading file '{file_path}' to element with XPath: {xpath}"
+        )
         if not os.path.isabs(file_path):
             raise ValueError("File path for upload must be an absolute path.")
         if not os.path.exists(file_path):
@@ -372,7 +414,9 @@ class BrowserController:
             text (str): The visible text of the option to select.
             timeout (int): Maximum time to wait for the element.
         """
-        self.logger.debug(f"Selecting option '{text}' by text from dropdown with XPath: {xpath}")
+        self.logger.debug(
+            f"Selecting option '{text}' by text from dropdown with XPath: {xpath}"
+        )
         select = self._get_select_object(xpath, timeout)
         select.select_by_visible_text(text)
 
@@ -385,7 +429,9 @@ class BrowserController:
             value (str): The value attribute of the option to select.
             timeout (int): Maximum time to wait for the element.
         """
-        self.logger.debug(f"Selecting option with value '{value}' from dropdown with XPath: {xpath}")
+        self.logger.debug(
+            f"Selecting option with value '{value}' from dropdown with XPath: {xpath}"
+        )
         select = self._get_select_object(xpath, timeout)
         select.select_by_value(value)
 
@@ -398,7 +444,9 @@ class BrowserController:
             index (int): The index of the option to select (0-based).
             timeout (int): Maximum time to wait for the element.
         """
-        self.logger.debug(f"Selecting option at index {index} from dropdown with XPath: {xpath}")
+        self.logger.debug(
+            f"Selecting option at index {index} from dropdown with XPath: {xpath}"
+        )
         select = self._get_select_object(xpath, timeout)
         select.select_by_index(index)
 
@@ -415,7 +463,9 @@ class BrowserController:
         if select.is_multiple:
             select.deselect_all()
         else:
-            self.logger.warning("Deselect_all is only applicable to multi-select dropdowns.")
+            self.logger.warning(
+                "Deselect_all is only applicable to multi-select dropdowns."
+            )
 
     def deselect_option_by_text(self, xpath: str, text: str, timeout: int = 10) -> None:
         """
@@ -426,12 +476,16 @@ class BrowserController:
             text (str): The visible text of the option to deselect.
             timeout (int): Maximum time to wait for the element.
         """
-        self.logger.debug(f"Deselecting option '{text}' by text from dropdown with XPath: {xpath}")
+        self.logger.debug(
+            f"Deselecting option '{text}' by text from dropdown with XPath: {xpath}"
+        )
         select = self._get_select_object(xpath, timeout)
         if select.is_multiple:
             select.deselect_by_visible_text(text)
         else:
-            self.logger.warning("Deselection is only applicable to multi-select dropdowns.")
+            self.logger.warning(
+                "Deselection is only applicable to multi-select dropdowns."
+            )
 
     def get_all_selected_options_text(self, xpath: str, timeout: int = 10) -> list[str]:
         """

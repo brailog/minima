@@ -1,13 +1,15 @@
+import logging
+
+from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.remote.webdriver import WebDriver
 from selenium.webdriver.remote.webelement import WebElement
-from selenium.webdriver.common.action_chains import ActionChains
-import logging
+
 
 class Mouse:
     """
     Controla interações de baixo nível do mouse usando ActionChains nativo do Selenium.
     """
-    
+
     def __init__(self, driver: WebDriver) -> None:
         """Inicializa o Mouse recebendo o driver atual do navegador."""
         self.driver: WebDriver = driver
@@ -38,7 +40,9 @@ class Mouse:
         body: WebElement = self.driver.find_element("tag name", "body")
         self._get_actions().move_to_element_with_offset(body, 0, 0).perform()
 
-    def drag_and_drop(self, source_element: WebElement, target_element: WebElement) -> None:
+    def drag_and_drop(
+        self, source_element: WebElement, target_element: WebElement
+    ) -> None:
         """Clica e segura um WebElement e o solta em cima de outro WebElement."""
         self.logger.debug("Executando drag and drop.")
         self._get_actions().drag_and_drop(source_element, target_element).perform()

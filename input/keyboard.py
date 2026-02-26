@@ -2,11 +2,12 @@ from selenium.webdriver import ActionChains
 from selenium.webdriver.common.keys import Keys
 from selenium.webdriver.remote.webdriver import WebDriver
 
+
 class KeyboardController:
     def __init__(self, session_driver: WebDriver) -> None:
         """
         Initializes the Keyboard helper with an active WebDriver session.
-        
+
         Args:
             session_driver (WebDriver): The active WebDriver instance.
         """
@@ -15,7 +16,7 @@ class KeyboardController:
     def send_keys(self, key: str) -> None:
         """
         Sends a single key press to the current active element or browser context.
-        
+
         Args:
             key (str): The key to be pressed.
         """
@@ -76,7 +77,7 @@ class KeyboardController:
     def press_function_key(self, function_key: int) -> None:
         """
         Simulates pressing a function key (F1 through F12).
-        
+
         Args:
             function_key (int): The number of the function key (1-12).
         """

@@ -2,8 +2,12 @@ import os
 
 # LINUX BROWSER PATHS
 FIREFOX_BIN_LINUX = os.path.join("/usr", "bin", "firefox")
-FIREFOX_SNAP_BIN_LINUX = os.path.join("/snap", "firefox", "current", "usr", "lib", "firefox", "firefox")
-FIREFOXDRIVE_SNAP_BIN_LINUX = os.path.join("/snap", "firefox", "current", "usr", "lib", "firefox", "geckodriver")
+FIREFOX_SNAP_BIN_LINUX = os.path.join(
+    "/snap", "firefox", "current", "usr", "lib", "firefox", "firefox"
+)
+FIREFOXDRIVE_SNAP_BIN_LINUX = os.path.join(
+    "/snap", "firefox", "current", "usr", "lib", "firefox", "geckodriver"
+)
 CHROME_BIN_LINUX = os.path.join("/usr", "bin", "google-chrome")
 CHROME_STABLE_BIN_LINUX = os.path.join("/usr", "bin", "google-chrome-stable")
 CHROME_OPT_BIN_LINUX = os.path.join("/opt", "google", "chrome", "google-chrome")
@@ -19,25 +23,73 @@ VIVALDI_BIN_LINUX = os.path.join("/usr", "bin", "vivaldi")
 VIVALDI_OPT_BIN_LINUX = os.path.join("/opt", "vivaldi", "vivaldi")
 
 # WINDOWS BROWSER PATHS
-FIREFOX_BIN_WINDOWS = os.path.join("C:\\", "Program Files", "Mozilla Firefox", "firefox.exe")
-FIREFOX_X86_BIN_WINDOWS = os.path.join("C:\\", "Program Files (x86)", "Mozilla Firefox", "firefox.exe")
-FIREFOX_LOCAL_BIN_WINDOWS = os.path.expandvars(os.path.join("%LOCALAPPDATA%", "Mozilla Firefox", "firefox.exe"))
-CHROME_BIN_WINDOWS = os.path.join("C:\\", "Program Files", "Google", "Chrome", "Application", "chrome.exe")
-CHROME_X86_BIN_WINDOWS = os.path.join("C:\\", "Program Files (x86)", "Google", "Chrome", "Application", "chrome.exe")
-CHROME_LOCAL_BIN_WINDOWS = os.path.expandvars(os.path.join("%LOCALAPPDATA%", "Google", "Chrome", "Application", "chrome.exe"))
-EDGE_BIN_WINDOWS = os.path.join("C:\\", "Program Files (x86)", "Microsoft", "Edge", "Application", "msedge.exe")
-OPERA_BIN_WINDOWS = os.path.expandvars(os.path.join("%LOCALAPPDATA%", "Programs", "Opera", "launcher.exe"))
+FIREFOX_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files", "Mozilla Firefox", "firefox.exe"
+)
+FIREFOX_X86_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files (x86)", "Mozilla Firefox", "firefox.exe"
+)
+FIREFOX_LOCAL_BIN_WINDOWS = os.path.expandvars(
+    os.path.join("%LOCALAPPDATA%", "Mozilla Firefox", "firefox.exe")
+)
+CHROME_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files", "Google", "Chrome", "Application", "chrome.exe"
+)
+CHROME_X86_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files (x86)", "Google", "Chrome", "Application", "chrome.exe"
+)
+CHROME_LOCAL_BIN_WINDOWS = os.path.expandvars(
+    os.path.join("%LOCALAPPDATA%", "Google", "Chrome", "Application", "chrome.exe")
+)
+EDGE_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files (x86)", "Microsoft", "Edge", "Application", "msedge.exe"
+)
+OPERA_BIN_WINDOWS = os.path.expandvars(
+    os.path.join("%LOCALAPPDATA%", "Programs", "Opera", "launcher.exe")
+)
 OPERA_PROG_BIN_WINDOWS = os.path.join("C:\\", "Program Files", "Opera", "launcher.exe")
-BRAVE_BIN_WINDOWS = os.path.join("C:\\", "Program Files", "BraveSoftware", "Brave-Browser", "Application", "brave.exe")
-BRAVE_X86_BIN_WINDOWS = os.path.join("C:\\", "Program Files (x86)", "BraveSoftware", "Brave-Browser", "Application", "brave.exe")
-VIVALDI_LOCAL_BIN_WINDOWS = os.path.expandvars(os.path.join("%LOCALAPPDATA%", "Vivaldi", "Application", "vivaldi.exe"))
-VIVALDI_BIN_WINDOWS = os.path.join("C:\\", "Program Files", "Vivaldi", "Application", "vivaldi.exe")
+BRAVE_BIN_WINDOWS = os.path.join(
+    "C:\\",
+    "Program Files",
+    "BraveSoftware",
+    "Brave-Browser",
+    "Application",
+    "brave.exe",
+)
+BRAVE_X86_BIN_WINDOWS = os.path.join(
+    "C:\\",
+    "Program Files (x86)",
+    "BraveSoftware",
+    "Brave-Browser",
+    "Application",
+    "brave.exe",
+)
+VIVALDI_LOCAL_BIN_WINDOWS = os.path.expandvars(
+    os.path.join("%LOCALAPPDATA%", "Vivaldi", "Application", "vivaldi.exe")
+)
+VIVALDI_BIN_WINDOWS = os.path.join(
+    "C:\\", "Program Files", "Vivaldi", "Application", "vivaldi.exe"
+)
 
 # macOS BROWSER PATHS
-SAFARI_BIN_MAC = os.path.join("/", "Applications", "Safari.app", "Contents", "MacOS", "Safari")
-FIREFOX_BIN_MAC = os.path.join("/", "Applications", "Firefox.app", "Contents", "MacOS", "firefox")
-CHROME_BIN_MAC = os.path.join("/", "Applications", "Google Chrome.app", "Contents", "MacOS", "Google Chrome")
-EDGE_BIN_MAC = os.path.join("/", "Applications", "Microsoft Edge.app", "Contents", "MacOS", "Microsoft Edge")
-OPERA_BIN_MAC = os.path.join("/", "Applications", "Opera.app", "Contents", "MacOS", "Opera")
-BRAVE_BIN_MAC = os.path.join("/", "Applications", "Brave Browser.app", "Contents", "MacOS", "Brave Browser")
-VIVALDI_BIN_MAC = os.path.join("/", "Applications", "Vivaldi.app", "Contents", "MacOS", "Vivaldi")
+SAFARI_BIN_MAC = os.path.join(
+    "/", "Applications", "Safari.app", "Contents", "MacOS", "Safari"
+)
+FIREFOX_BIN_MAC = os.path.join(
+    "/", "Applications", "Firefox.app", "Contents", "MacOS", "firefox"
+)
+CHROME_BIN_MAC = os.path.join(
+    "/", "Applications", "Google Chrome.app", "Contents", "MacOS", "Google Chrome"
+)
+EDGE_BIN_MAC = os.path.join(
+    "/", "Applications", "Microsoft Edge.app", "Contents", "MacOS", "Microsoft Edge"
+)
+OPERA_BIN_MAC = os.path.join(
+    "/", "Applications", "Opera.app", "Contents", "MacOS", "Opera"
+)
+BRAVE_BIN_MAC = os.path.join(
+    "/", "Applications", "Brave Browser.app", "Contents", "MacOS", "Brave Browser"
+)
+VIVALDI_BIN_MAC = os.path.join(
+    "/", "Applications", "Vivaldi.app", "Contents", "MacOS", "Vivaldi"
+)

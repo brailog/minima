@@ -1,8 +1,9 @@
 import re
 import time
+
+from engine.context import current_session
 from logs.logger_utils import initialize_logger
 from settings.exceptions import ElementNotVisibleException
-from engine.context import current_session
 
 
 class UIElement:
@@ -36,13 +37,17 @@ class UIElement:
                 )
 
         self.logger = initialize_logger(self.__class__.__name__)
-        self.logger.debug(f"Initializing {self.__class__.__name__} with attributes: {kwargs}")
+        self.logger.debug(
+            f"Initializing {self.__class__.__name__} with attributes: {kwargs}"
+        )
 
         self.controller = self.session
         self.attrs = kwargs
         self.xpath = self._build_xpath()
 
-        self.logger.debug(f"Constructed XPath for {self.__class__.__name__}: {self.xpath}")
+        self.logger.debug(
+            f"Constructed XPath for {self.__class__.__name__}: {self.xpath}"
+        )
 
     def _build_xpath(self) -> str:
         """
@@ -79,7 +84,17 @@ class UIElement:
         """
         attributes = {
             attr_name: element.get_attribute(attr_name)
-            for attr_name in ["id", "class", "name", "type", "value", "href", "src", "alt", "aria-label"]
+            for attr_name in [
+                "id",
+                "class",
+                "name",
+                "type",
+                "value",
+                "href",
+                "src",
+                "alt",
+                "aria-label",
+            ]
             if element.get_attribute(attr_name) is not None
         }
         return {

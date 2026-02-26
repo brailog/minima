@@ -1,16 +1,15 @@
 import os
-import time
 import random
-from engine.context import browser_session
+import time
 
-from ui.ui_element import UIElement
+from engine.context import browser_session
 from ui.browser import Browser
 from ui.button import Button
-from ui.text import Text, Textlink
-from ui.input_field import InputField
-from ui.file_manager import FileManager
 from ui.dropdown import Dropdown
-
+from ui.file_manager import FileManager
+from ui.input_field import InputField
+from ui.text import Text, Textlink
+from ui.ui_element import UIElement
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
 MOCKUP_TEST_URL_FILE = "https://ui-playground.xyz/"

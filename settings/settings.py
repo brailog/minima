@@ -13,8 +13,12 @@ class _ConfigLoader:
         """
         self.log_level = os.getenv("PYAUTOTK_LOG_LEVEL", "INFO")
         self.browser_type = os.getenv("PYAUTOTK_BROWSER_TYPE", "chrome")
-        self.maximize_browser = os.getenv("PYAUTOTK_MAXIMIZE_BROWSER", "False").lower() == "true"
-        self.headless_mode = os.getenv("PYAUTOTK_HEADLESS_MODE", "False").lower() == "true"
+        self.maximize_browser = (
+            os.getenv("PYAUTOTK_MAXIMIZE_BROWSER", "False").lower() == "true"
+        )
+        self.headless_mode = (
+            os.getenv("PYAUTOTK_HEADLESS_MODE", "False").lower() == "true"
+        )
         self.artifacts_path = os.getenv("PYAUTOTK_ARTIFACTS_PATH", "./logs")
 
     def __repr__(self):
