@@ -5,7 +5,7 @@ from settings.settings import config
 
 
 def initialize_logger(
-    logger_name: str = "PyAutoTk",
+    logger_name: str = "minima",
     log_level: str = None,
     log_to_file: Optional[str] = None,
 ) -> logging.Logger:

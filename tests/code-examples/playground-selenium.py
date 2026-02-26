@@ -213,7 +213,7 @@ def test_drag_and_drop(driver):
 def full_execution():
     """
     Sets up the Selenium driver, runs all tests, and tears down the driver.
-    This replaces the `@browser_session` decorator from PyAutoTk.
+    This replaces the `@browser_session` decorator from minima.
     """
     # Using Firefox, but you can easily swap to Chrome
     driver = webdriver.Chrome()

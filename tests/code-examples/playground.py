@@ -197,4 +197,4 @@ def full_execution(session):
 
 if __name__ == "__main__":
     full_execution()
-    print("Todos os testes do PyAutoTk foram executados com sucesso!")
+    print("Todos os testes do minima foram executados com sucesso!")
