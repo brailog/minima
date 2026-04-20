@@ -31,5 +31,15 @@ source_suffix = {
     '.md': 'markdown',
 }
 
-# The master toctree document.
-master_doc = 'index'
+import os
+
+# Obter o idioma do ambiente do Read the Docs, padrão é 'en'
+language = os.environ.get('READTHEDOCS_LANGUAGE', 'en')
+
+# O documento principal da toctree.
+if language in ['pt', 'pt-br', 'br']:
+    master_doc = 'br/index'
+else:
+    master_doc = 'en/index'
+
+# locale_dirs = ['locale/']   # Opcional se usar o gettext do Sphinx no futuro
