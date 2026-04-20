@@ -2,6 +2,13 @@
 
 Minima is built on the philosophy that automation should be as intuitive as manual interaction. By separating human inputs (keyboard and mouse) from the core browser engine, Minima allows developers to build robust scripts that are easy to read, maintain, and scale.
 
+## 📚 Documentation
+
+For complete usage instructions and API references, check out our newly added docs:
+- [Introduction & Philosophy](docs/index.md)
+- [Getting Started](docs/getting-started.md)
+- [API Reference](docs/api-reference.md)
+- [Token Economics & Readability Hypothesis](docs/token-economics-hypothesis.md)
 
 ## Project Structure
 
