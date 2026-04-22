@@ -4,9 +4,14 @@ version = "0.1.0"
 description = "Automação de framework para cloud"
 readme = "README.md"
 requires-python = ">=3.12"
+license = { text = "Apache-2.0" }
+authors = [
+    { email = "bielrammos@gmail.com" },
+    { email = "grro@cin.ufpe.br" }
+]
 dependencies = [
     "selenium>=4.22.0",
-    " webdriver-manager>=4.0.1",
+    "webdriver-manager>=4.0.1",
     "openai>=1.55.0",
     "python-dotenv>=1.1.1",
     "playwright>=1.50.0",
@@ -14,10 +19,22 @@ dependencies = [
     "ffmpeg-python>=0.2.0",
     "pydantic>=2.10.1",
     "pydantic-settings>=2.12.1",
-    " playwright-stealth>=1.3.2",
+    "playwright-stealth>=1.3.2",
     "pandas>=2.2.2",
     "pyyaml>=6.0.2",
 ]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "License :: OSI Approved :: Apache Software License",
+    "Operating System :: OS Independent",
+    "Topic :: Software Development :: Libraries :: Python Modules",
+]
+
+[project.urls]
+"Homepage" = "https://github.com/brailog/minima"
+"Documentation" = "https://minima-br.readthedocs.io/pt-br/latest/"
+"Repository" = "https://github.com/brailog/minima"
+"Bug Tracker" = "https://github.com/brailog/minima/issues"
 
 [build-system]
 requires = ["hatchling"]
