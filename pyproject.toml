@@ -1,5 +1,5 @@
 [project]
-name = "minima"
+name = "py-minima"
 version = "0.1.0"
 description = "Automação de framework para cloud"
 readme = "README.md"
