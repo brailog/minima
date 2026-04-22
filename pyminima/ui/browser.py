@@ -1,4 +1,4 @@
-from pypypypypypyminima.engine.context import current_session
+from pyminima.engine.context import current_session
 
 
 class Browser:

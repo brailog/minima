@@ -1,4 +1,4 @@
-from pypyminima.ui.ui_element import UIElement
+from pyminima.ui.ui_element import UIElement
 
 
 class FileManager(UIElement):
