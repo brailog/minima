@@ -7,7 +7,7 @@ In the modern era of AI-assisted coding and autonomous agents, this translates d
 
 ## Empirical Comparison
 
-To test this hypothesis, we compared identical test suites executing the same business logic against `https://ui-playground.xyz/`.
+To test this hypothesis, we compared identical test suites executing the same business logic against `https://minima-ui.com/playground/`.
 
 1. **`playground_selenium.py`**: Implementation using raw Selenium WebDriver with explicit waits and XPath boilerplate.
 2. **`playground.py`**: Implementation using the semantic `minima` framework.

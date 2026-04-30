@@ -35,7 +35,7 @@ from minima.ui.text import Text
 
 # O decorador @browser_session lida automaticamente com a configuração do navegador,
 # navegação e encerramento. Nenhum boilerplate necessário!
-@browser_session(url="https://ui-playground.xyz/", browser_type="chrome")
+@browser_session(url="https://minima-ui.com/playground/", browser_type="chrome")
 def executar_teste():
     # 1. Insira texto nos campos de entrada
     InputField(id="email-input").enter_text("ola@minima.dev")

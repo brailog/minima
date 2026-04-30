@@ -7,7 +7,7 @@ Na era moderna da codificação assistida por IA e agentes autônomos, isso se t
 
 ## Comparação Empírica
 
-Para testar essa hipótese, comparamos suítes de testes idênticas executando a mesma lógica de negócios contra `https://ui-playground.xyz/`.
+Para testar essa hipótese, comparamos suítes de testes idênticas executando a mesma lógica de negócios contra `https://minima-ui.com/playground/`.
 
 1. **`playground_selenium.py`**: Implementação usando Selenium WebDriver puro com esperas explícitas e boilerplate de XPath.
 2. **`playground.py`**: Implementação usando o framework semântico `minima`.
