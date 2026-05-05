@@ -12,7 +12,7 @@ from pyminima.ui.text import Text, Textlink
 from pyminima.ui.ui_element import UIElement
 
 base_dir = os.path.dirname(os.path.abspath(__file__))
-MOCKUP_TEST_URL_FILE = "http://localhost:5173/playground"
+MOCKUP_TEST_URL_FILE = "https://minima-ui.com/playground"
 
 
 # ── NAVIGATION ──
